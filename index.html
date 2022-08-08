@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>3 en Raya</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <!-- Emmet snippet
+    main#juego>h1.logo(section.tablero>.casilla[data-casilla]*9)+section#final-partida.final-partida>[data-resultado]+button{Reiniciar}     -->
+    <main id="juego">
+      <h1 class="logo">3 en Raya</h1>
+      <!-- Uso classesjugador-x o jugador-o para determinar el turno -->
+      <section id="tablero" class="">
+        <div class="casilla" data-casilla></div>
+        <div class="casilla" data-casilla></div>
+        <div class="casilla" data-casilla></div>
+        <div class="casilla" data-casilla></div>
+        <div class="casilla" data-casilla></div>
+        <div class="casilla" data-casilla></div>
+        <div class="casilla" data-casilla></div>
+        <div class="casilla" data-casilla></div>
+        <div class="casilla" data-casilla></div>
+      </section>
+      <section id="final-partida" class="final-partida">
+        <div id="resultado"></div>
+        <button id="restart">Reiniciar</button>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
 </html>

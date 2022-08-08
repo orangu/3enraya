@@ -1,0 +1,152 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --casilla-size: 100px;
+  --simbolo-size: calc(var(--casilla-size) * 0.9);
+}
+
+#juego {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.logo {
+  text-align: center;
+  padding-bottom: 5rem;
+}
+
+#tablero {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.casilla {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  width: var(--casilla-size);
+  height: var(--casilla-size);
+  position: relative;
+  cursor: pointer;
+}
+
+.casilla.jugador-x,
+.casilla.jugador-o {
+  cursor: not-allowed;
+}
+
+.casilla:first-child,
+.casilla:nth-child(2),
+.casilla:nth-child(3) {
+  border-top: none;
+}
+
+.casilla:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.casilla:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.casilla:last-child,
+.casilla:nth-child(7),
+.casilla:nth-child(8) {
+  border-bottom: none;
+}
+
+.casilla.jugador-x::before,
+.casilla.jugador-x::after,
+.casilla.jugador-o::before {
+  background-color: #000;
+}
+
+#tablero.jugador-x .casilla:not(.jugador-x):not(.jugador-o):hover::before,
+#tablero.jugador-x .casilla:not(.jugador-x):not(.jugador-o):hover::after,
+#tablero.jugador-o .casilla:not(.jugador-x):not(.jugador-o):hover::before {
+  background-color: lightgrey;
+}
+
+.casilla.jugador-x::before,
+.casilla.jugador-x::after,
+#tablero.jugador-x .casilla:not(.jugador-x):not(.jugador-o):hover::before,
+#tablero.jugador-x .casilla:not(.jugador-x):not(.jugador-o):hover::after {
+  content: "";
+  width: calc(var(--simbolo-size) * 0.15);
+  height: var(--casilla-size);
+  border-radius: 2px;
+  position: absolute;
+}
+
+.casilla.jugador-x:before,
+#tablero.jugador-x .casilla:not(.jugador-x):not(.jugador-o):hover::before {
+  transform: rotate(45deg);
+}
+
+.casilla.jugador-x:after,
+#tablero.jugador-x .casilla:not(.jugador-x):not(.jugador-o):hover::after {
+  transform: rotate(-45deg);
+}
+.casilla.jugador-o::before,
+#tablero.jugador-o .casilla:not(.jugador-x):not(.jugador-o):hover::before {
+  content: "";
+  position: absolute;
+  width: var(--simbolo-size);
+  height: var(--simbolo-size);
+  border-radius: 50%;
+}
+
+.casilla.jugador-o::after,
+#tablero.jugador-o .casilla:not(.jugador-x):not(.jugador-o):hover::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--simbolo-size) * 0.7);
+  height: calc(var(--simbolo-size) * 0.7);
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+}
+
+.final-partida {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 5rem;
+  flex-direction: column;
+}
+
+.final-partida.show {
+  display: flex;
+}
+
+.final-partida button {
+  font-size: 3rem;
+  background-color: #fff;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.final-partida button:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #fff;
+}
